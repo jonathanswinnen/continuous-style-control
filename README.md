@@ -21,7 +21,40 @@ Our findings are described in our [final report](report.pdf).
 
 <h2>Try it out yourself</h2>
 
-To experiment with our code and see how it works, you can take a look at the Jupyter Notebook. The [CSC-all-in-one.ipynb](CSC-all-in-one.ipynb) notebook can simply be uploaded to Google Colab and should just work without any extra setup. You can also find this notebook <a href="https://colab.research.google.com/drive/1TU4SkCyWEjO-nZOs4q4PW0FDy_TrRstK?usp=sharing">here</a>. To run our main interpolation method (AttentionFullInterpolation) locally, a GPU with 16GB+ VRAM is required.
+To experiment with our code and see how it works, you can take a look at the Jupyter Notebook. The [CSC-all-in-one.ipynb](CSC-all-in-one.ipynb) notebook can simply be uploaded to Google Colab and should just work without any extra setup. You can also find this notebook <a href="https://colab.research.google.com/drive/1TU4SkCyWEjO-nZOs4q4PW0FDy_TrRstK?usp=sharing">here</a>. 
+
+Our main / best method (CLIP+Attention interpolation) has been implemented in the `AttentionFullInterpolation` controller. This controller wraps around any [Prompt-to-Prompt edit controller](https://github.com/google/prompt-to-prompt#prompt-edits) and interpolates by a given factor between the original output and the edited output.
+
+Example: 
+
+```python
+# We interpolate between these two prompts: 
+prompts = ["A painting of a squirrel eating a burger",
+           "A painting of a lion eating a burger"]  
+
+# Define any edit controller using Prompt-to-Prompt:
+lb = LocalBlend(prompts, [("squirrel","lion")])
+controller_edit = AttentionReplace(prompts, NUM_DIFFUSION_STEPS,
+                                   cross_replace_steps=.8, self_replace_steps=0.4, local_blend=lb)
+
+# The interpolation controller needs a third placeholder prompt.
+# The prompt itself does not matter as it will be replaced by the interpolated CLIP embedding of the first two prompts.
+prompts += [""]
+
+# interpolate 50%
+p = 0.5
+
+# Define the interpolation controller, which wraps around the edit controller.
+# You can also use local_blend in the interpolation controller, just like in any other Prompt-to-Prompt edit.
+controller_interp = AttentionFullInterpolate(p, prompts, NUM_DIFFUSION_STEPS, controller=controller_edit,
+                                             cross_replace_steps=0.9, self_replace_steps=0.8, local_blend=lb)
+
+# run & display result
+run_and_display(prompts, controller_interp, run_baseline=False, clip_alpha=p, result_only=True)
+
+```
+
+To run AttentionFullInterpolate, a GPU with 16GB+ VRAM is required.
 
 <h2>A few results </h2>
 "A charcoal drawing of a squirrel eating a burger"  &rarr;  "A painting by Van Gogh of a squirrel eating a burger"
