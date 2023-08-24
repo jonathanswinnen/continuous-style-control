@@ -37,7 +37,7 @@ lb = LocalBlend(prompts, [("squirrel","lion")])
 controller_edit = AttentionReplace(prompts, NUM_DIFFUSION_STEPS,
                                    cross_replace_steps=.8, self_replace_steps=0.4, local_blend=lb)
 
-# The interpolation controller needs a third placeholder prompt.
+# The AttentionFullInterpolate controller needs a third placeholder prompt.
 # The prompt itself does not matter as it will be replaced by the interpolated CLIP embedding of the first two prompts.
 prompts += [""]
 
