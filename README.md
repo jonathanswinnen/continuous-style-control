@@ -16,7 +16,7 @@ such interpolation can also be achieved using diffusion models.
 Our attempt to achieve this uses a combination of CLIP embedding interpolation and attention map interpolation (based on <a href="https://prompt-to-prompt.github.io/">Prompt-to-Prompt</a>).
 We also tried comparing it to another technique based on <a href="https://github.com/ml-research/semantic-image-editing">Semantic Guidance</a>. These methods are then used to interpolate between text prompts, which allows continuous style control (eg. between prompts like "a red car" and "a green car"), but also more complex morphs (eg. "a squirrel eating a burger" and "a lion eating a burger").
 <br><br>
-Our findings are described in our final report (`report.pdf`) and presentation (`presentation.pdf`).
+Our findings are described in our final report (`report.pdf`).
 
 <h2>Try it out yourself</h2>
 
