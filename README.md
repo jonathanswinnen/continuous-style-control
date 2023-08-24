@@ -1,7 +1,12 @@
 <h1 align="center">Continuous Style Control</h1>
-<p align="center"><strong>Image morphing using Stable Diffusion</strong></p>
+<p align="center"><strong>Image morphing using Stable Diffusion</strong><br><br>
+           <a href="https://colab.research.google.com/drive/1TU4SkCyWEjO-nZOs4q4PW0FDy_TrRstK">
+                      <img src="https://colab.research.google.com/assets/colab-badge.svg"></img>
+           </a>
+</p>
 <br/>
-<div align="center"><img src="results/draw-vangogh.png"></img>
+<div align="center">
+           <img src="results/draw-vangogh.png"></img> <br>
 </div>
 <h2>About</h2>
 
