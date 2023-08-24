@@ -1,7 +1,8 @@
 <h1 align="center">Continuous Style Control</h1>
 <p align="center"><strong>Image morphing using Stable Diffusion</strong></p>
 <br/>
-<div align="center"><img src="preview.png"></img></div>
+<div align="center"><img src="results/draw-vangogh.png"></img>
+</div>
 <h2>About</h2>
 
 Unlike text-conditioned models like Stable Diffusion, common unconditional
@@ -20,11 +21,24 @@ Our findings are described in our [final report](report.pdf).
 
 <h2>Try it out yourself</h2>
 
-To experiment with our code and see how it works, you can take a look at the Jupyter Notebooks. The 'all-in-one' notebook can simply be uploaded to Google Colab and should just work without any extra setup (but contains a bit more clutter since all the code is copy pasted into the notebook and is not separated into different files). You can also find this notebook <a href="">here</a>. To run our main interpolation method (AttentionFullInterpolation) locally, a GPU with 16GB+ VRAM is required.
+To experiment with our code and see how it works, you can take a look at the Jupyter Notebook. The [CSC-all-in-one.ipynb](CSC-all-in-one.ipynb) notebook can simply be uploaded to Google Colab and should just work without any extra setup. You can also find this notebook <a href="https://colab.research.google.com/drive/1TU4SkCyWEjO-nZOs4q4PW0FDy_TrRstK?usp=sharing">here</a>. To run our main interpolation method (AttentionFullInterpolation) locally, a GPU with 16GB+ VRAM is required.
 
-- `Att-CLIP-interpolate.ipynb`: notebook demonstrating the CLIP and attention interpolation methods.
-- `SEGA-interpolate.ipynb`: notebook demonstrating the alternative Semantic Guidance technique.
-- `All-in-one.ipynb`: standalone notebook combining all the code, which you can run in Google Colab
+<h2>A few results </h2>
+"A charcoal drawing of a squirrel eating a burger"  &rarr;  "A painting by Van Gogh of a squirrel eating a burger"
+<img src="results/draw-vangogh.png"></img>
+<br>
+"A painting of a squirrel eating a burger"  &rarr;  "A painting of a lion eating a burger"
+<img src="results/squirrel-lion.png"></img>
+<br>
+"A portrait of a Roman Emperor" &rarr; "A portrait of a Chinese Empress"
+<img src="results/emperor-empress.png"></img>
+<br>
+"A children's painting of a large castle on a hill in the distance" &rarr; "A drawing of a large fantasy castle on a hill in the distance"
+<img src="results/castles.png"></img>
+<br>
+"A realistic painting of a white boy" &rarr; "A realistic painting of a black girl"
+<img src="results/boy-girl.png"></img>
+
 
 <h2>Credits</h2>
 
